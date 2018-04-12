@@ -21,10 +21,11 @@ IMAGE_PIXELS = IMAGE_SIZE * IMAGE_SIZE
 def inference(images, hidden1_units, hidden2_units):
   # Hidden 1
   with tf.name_scope('hidden1'):
+#生成指定维度的正态分布点
     weights = tf.Variable(
-        tf.truncated_normal([IMAGE_PIXELS, hidden1_units],
+        tf.truncated_normal([IMAGE_PIXELS, hidden1_units],#权重[input_dim, output_dim]
                             stddev=1.0 / math.sqrt(float(IMAGE_PIXELS))),
-        name='weights')
+        name='weights') #其全局名为：'hidden1/weights'
     biases = tf.Variable(tf.zeros([hidden1_units]),
                          name='biases')
     hidden1 = tf.nn.relu(tf.matmul(images, weights) + biases)

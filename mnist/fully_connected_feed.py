@@ -59,7 +59,7 @@ def do_eval(sess,
             data_set):
   true_count = 0  # 记录预测正确的数目。
   steps_per_epoch = data_set.num_examples // FLAGS.batch_size
-  num_examples = steps_per_epoch * FLAGS.batch_size
+  num_examples = steps_per_epoch * FLAGS.batch_size #舍弃无法完整构成一个batch的剩余数据
   for step in xrange(steps_per_epoch):
     feed_dict = fill_feed_dict(data_set,
                                images_placeholder,
